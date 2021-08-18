@@ -1,0 +1,36 @@
+﻿@model Brands
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layouta.cshtml";
+}
+<div class="content">
+    <div class="container-fluid">
+        <div class="col-md-12 mx-auto">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h5 class="title">Edit Product</h5>
+                </div>
+                <form action="/Admin/Brand/EditBrand1" method="post">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="brand_id" class="bmd-label-floating">Brand Id</label>
+                                    <input asp-for="brand_id" type="text" id="brand_id" name="brand_id" value="@Model.brand_id" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="brand_title" class="bmd-label-floating">Brand Title</label>
+                                    <input asp-for="brand_title" type="text" name="brand_title" id="brand_title" value="@Model.brand_title" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <input type="submit" class="btn btn-fill btn-primary" name="submit" value="Update" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

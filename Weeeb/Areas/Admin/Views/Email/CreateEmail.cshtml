@@ -1,0 +1,39 @@
+﻿@model Email_Info
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layouta.cshtml";
+}
+<!-- End Navbar -->
+<div class="content">
+    <div class="container-fluid">
+        <!-- your content here -->
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title">Add Emails</h4>
+                    <p class="card-category">Complete User profile</p>
+                </div>
+                <div class="card-body">
+                    <form action="" method="post" name="form" enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="email_id" class="bmd-label-floating">Email id</label>
+                                    <input asp-for="email_id" type="text" id="email_id" name="email_id" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="email" class="bmd-label-floating">Email title</label>
+                                    <input asp-for="email" type="text" name="email" id="email" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" value="CreateEmail" name="btn_save" id="btn_save" class="btn btn-primary pull-right">Update Brand</button>
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

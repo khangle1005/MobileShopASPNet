@@ -1,0 +1,306 @@
+﻿@model IEnumerable<Products>
+@{
+    ViewData["Title"] = "Home Page";
+    if (Context.Session.GetString("username") != null)
+    {
+        ViewData["acc"] = "Hi " + Context.Session.GetString("username");
+    }
+    else
+    {
+        ViewData["acc"] = "My Account";
+    }
+}
+<script id="jsbin-javascript">
+    (function (global) {
+        if (typeof (global) === "undefined") {
+            throw new Error("window is undefined");
+        }
+        var _hash = "!";
+        var noBackPlease = function () {
+            global.location.href += "#";
+            // making sure we have the fruit available for juice....
+            // 50 milliseconds for just once do not cost much (^__^)
+            global.setTimeout(function () {
+                global.location.href += "!";
+            }, 50);
+        };
+        // Earlier we had setInerval here....
+        global.onhashchange = function () {
+            if (global.location.hash !== _hash) {
+                global.location.hash = _hash;
+            }
+        };
+        global.onload = function () {
+            noBackPlease();
+            // disables backspace on page except on input fields and textarea..
+            document.body.onkeydown = function (e) {
+                var elm = e.target.nodeName.toLowerCase();
+                if (e.which === 8 && (elm !== 'input' && elm !== 'textarea')) {
+                    e.preventDefault();
+                }
+                // stopping event bubbling up the DOM tree..
+                e.stopPropagation();
+            };
+        };
+    })(window);
+</script>
+<div class="main main-raised">
+    <div class="section">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <!-- ASIDE -->
+                <div id="aside" class="col-md-3">
+                    <!-- aside Widget -->
+                    <div id="get_category">
+                        <div class="aside">
+                            <h3 class="aside-title">Loại</h3>
+                            <div class="btn-group-vertical">
+                                <div type="button" class="btn navbar-btn category" cid="1">
+                                    <a asp-controller="Home" asp-action="Electronics">
+                                        <span></span>
+                                        Điện tử
+                                        <small class="qty">(20)</small>
+                                    </a>
+                                </div>
+                                <div type="button" class="btn navbar-btn category" cid="2">
+                                    <a asp-controller="Home" asp-action="Ladies">
+                                        <span></span>
+                                        Nữ
+                                        <small class="qty">(7)</small>
+                                    </a>
+                                </div>
+                                <div type="button" class="btn navbar-btn category" cid="3">
+                                    <a asp-controller="Home" asp-action="Men">
+                                        <span></span>
+                                        Nam
+                                        <small class="qty">(26)</small>
+                                    </a>
+                                </div>
+                                <div type="button" class="btn navbar-btn category" cid="4">
+                                    <a asp-controller="Home" asp-action="Kids">
+                                        <span></span>
+                                        Trẻ em
+                                        <small class="qty">(7)</small>
+                                    </a>
+                                </div>
+                                <div type="button" class="btn navbar-btn category" cid="5">
+                                    <a asp-controller="Home" asp-action="Furnitures">
+                                        <span></span>
+                                        Đồ nội thất
+                                        <small class="qty">(1)</small>
+                                    </a>
+                                </div>
+                                <div type="button" class="btn navbar-btn category" cid="6">
+                                    <a asp-controller="Home" asp-action="HomeApp">
+                                        <span></span>
+                                        Thiết bị gia dụng
+                                        <small class="qty">(7)</small>
+                                    </a>
+                                </div>
+                                <div type="button" class="btn navbar-btn category" cid="7">
+                                    <a asp-controller="Home" asp-action="EGadgets">
+                                        <span></span>
+                                        Thiết bị điện tử
+                                        <small class="qty">(3)</small>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /aside Widget -->
+                    <!-- aside Widget -->
+                    <partial name="_PriceSlider" />
+                    <!-- /aside Widget -->
+                    <!-- aside Widget -->
+                    <div id="get_brand">
+                        <div class="aside">
+                            <h3 class="aside-title">Brand</h3>
+                            <div class="btn-group-vertical">
+                                <div type="button" class="btn navbar-btn selectBrand" bid="1">
+                                    <a asp-controller="Brand" asp-action="HP">
+                                        <span></span>
+                                        HP
+                                        <small>(5)</small>
+                                    </a>
+                                </div>
+                                <div type="button" class="btn navbar-btn selectBrand" bid="2">
+                                    <a asp-controller="Brand" asp-action="Samsung">
+                                        <span></span>
+                                        Samsung
+                                        <small>(9)</small>
+                                    </a>
+                                </div>
+                                <div type="button" class="btn navbar-btn selectBrand" bid="3">
+                                    <a asp-controller="Brand" asp-action="Apple">
+                                        <span></span>
+                                        Apple
+                                        <small>(4)</small>
+                                    </a>
+                                </div>
+                                <div type="button" class="btn navbar-btn selectBrand" bid="4">
+                                    <a asp-controller="Brand" asp-action="motorolla">
+                                        <span></span>
+                                        motorolla
+                                        <small>(4)</small>
+                                    </a>
+                                </div>
+                                <div type="button" class="btn navbar-btn selectBrand" bid="5">
+                                    <a asp-controller="Brand" asp-action="LG">
+                                        <span></span>
+                                        LG
+                                        <small>(5)</small>
+                                    </a>
+                                </div>
+                                <div type="button" class="btn navbar-btn selectBrand" bid="6">
+                                    <a asp-controller="Brand" asp-action="Cloth">
+                                        <span></span>
+                                        Cloth Brand
+                                        <small>(40)</small>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /aside Widget -->
+                    <!-- aside Widget -->
+                    <div class="aside">
+                        <h3 class="aside-title">Sản phẩm bán chạy</h3>
+                        <div id="get_product_home">
+                            <div class="product-widget">
+                                <a asp-controller="Product" asp-action="GetProduct" asp-route-id=1>
+                                    <div class="product-img">
+                                        <img src="/product_images/product07.png" alt="">
+                                    </div>
+                                </a><div class="product-body">
+                                    <a asp-controller="Product" asp-action="GetProduct" asp-route-id=1>
+                                        <p class="product-category">Electronics</p>
+                                    </a><h3 class="product-name"><a asp-controller="Product" asp-action="GetProduct" asp-route-id=1></a><a asp-controller="Product" asp-action="GetProduct" asp-route-id=1>Samsung galaxy s7 edge</a></h3>
+                                    <h4 class="product-price">5000<del class="product-old-price">$990.00</del></h4>
+                                </div>
+                            </div>
+                            <div class="product-widget">
+                                <a asp-controller="Product" asp-action="GetProduct" asp-route-id=2>
+                                    <div class="product-img">
+                                        <img src="/product_images/http___pluspng.com_img-png_iphone-hd-png-iphone-apple-png-file-550.png" alt="">
+                                    </div>
+                                </a><div class="product-body">
+                                    <a asp-controller="Product" asp-action="GetProduct" asp-route-id=2>
+                                        <p class="product-category">Electronics</p>
+                                    </a><h3 class="product-name"><a asp-controller="Product" asp-action="GetProduct" asp-route-id=2></a><a asp-controller="Product" asp-action="GetProduct" asp-route-id=2>iPhone 5s</a></h3>
+                                    <h4 class="product-price">25000<del class="product-old-price">$990.00</del></h4>
+                                </div>
+                            </div>
+                            <div class="product-widget">
+                                <a asp-controller="Product" asp-action="GetProduct" asp-route-id=3>
+                                    <div class="product-img">
+                                        <img src="/product_images/da4371ffa192a115f922b1c0dff88193.png" alt="">
+                                    </div>
+                                </a><div class="product-body">
+                                    <a asp-controller="Product" asp-action="GetProduct" asp-route-id=3>
+                                        <p class="product-category">Electronics</p>
+                                    </a><h3 class="product-name"><a asp-controller="Product" asp-action="GetProduct" asp-route-id=3></a><a asp-controller="Product" asp-action="GetProduct" asp-route-id=3>iPad air 2</a></h3>
+                                    <h4 class="product-price">30000<del class="product-old-price">$990.00</del></h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /aside Widget -->
+                </div>
+                <!-- /ASIDE -->
+                <!-- STORE -->
+                <div id="store" class="col-md-9">
+                    <!-- store top filter -->
+                    <div class="store-filter clearfix">
+                        <div class="store-sort">
+                            <label>
+                                Xếp theo:
+                                <select class="input-select">
+                                    <option value="0">Popular</option>
+                                    <option value="1">Position</option>
+                                </select>
+                            </label>
+                            <label>
+                                Show:
+                                <select class="input-select">
+                                    <option value="0">20</option>
+                                    <option value="1">50</option>
+                                </select>
+                            </label>
+                        </div>
+                        <ul class="store-grid">
+                            <li class="active"><i class="fa fa-th"></i></li>
+                            <li><a href="#"><i class="fa fa-th-list"></i></a></li>
+                        </ul>
+                    </div>
+                    <!-- /store top filter -->
+                    <!-- store products -->
+                    <div class="row" id="product-row">
+                        <div class="col-md-12 col-xs-12" id="product_msg">
+                        </div>
+                        <!-- product -->
+                        @foreach (var a in Model)
+                        {
+                            <div id="get_product">
+                                <div class="col-md-4 col-xs-6">
+                                    <a asp-controller="Product" asp-action="GetProduct" asp-route-id="@a.product_id"></a><div class="product">
+                                        <a asp-controller="Product" asp-action="GetProduct" asp-route-id="@a.product_id">
+                                            <div class="product-img">
+                                                <img src="/product_images/@a.product_image" style="max-height: 170px;" alt="">
+                                                <div class="product-label">
+                                                    <span class="sale">-30%</span>
+                                                    <span class="new">NEW</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <div class="product-body">
+                                            <p class="product-category">Electronics</p>
+                                            <h3 class="product-name header-cart-item-name"><a asp-controller="Product" asp-action="GetProduct" asp-route-id=1>@a.product_title</a></h3>
+                                            <h4 class="product-price header-cart-item-info">@a.product_price<del class="product-old-price">$990.00</del></h4>
+                                            <div class="product-rating">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <div class="product-btns">
+                                                <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
+                                                <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+                                                <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+                                            </div>
+                                        </div>
+                                        <div class="add-to-cart">
+                                            <a asp-controller="Home" asp-action="addCart" asp-route-id="@a.product_id"><button class='add-to-cart-btn block2-btn-towishlist'><i class='fa fa-shopping-cart'></i> Thêm vào giỏ</button></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <!-- /product -->
+                    </div>
+                    <!-- /store products -->
+                    <!-- store bottom filter -->
+                    <div class="store-filter clearfix">
+                        <span class="store-qty">Hiện 20-100 sản phẩm</span>
+                        <ul class="store-pagination" id="pageno">
+                            <li><a href="#product-row" page="1" id="page" class="active">1</a></li>
+                            <li><a href="#product-row" page="2" id="page" class="active">2</a></li>
+                            <li><a href="#product-row" page="3" id="page" class="active">3</a></li>
+                            <li><a href="#product-row" page="4" id="page" class="active">4</a></li>
+                            <li><a href="#product-row" page="5" id="page" class="active">5</a></li>
+                            <li><a href="#product-row" page="6" id="page" class="active">6</a></li>
+                            <li><a href="#product-row" page="7" id="page" class="active">7</a></li>
+                            <li><a href="#product-row" page="8" id="page" class="active">8</a></li>
+                        </ul>
+                    </div>
+                    <!-- /store bottom filter -->
+                </div>
+                <!-- /STORE -->
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+</div>

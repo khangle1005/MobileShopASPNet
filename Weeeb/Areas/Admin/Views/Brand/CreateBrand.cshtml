@@ -1,0 +1,39 @@
+﻿@model Brands
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layouta.cshtml";
+}
+<!-- End Navbar -->
+<div class="content">
+    <div class="container-fluid">
+        <!-- your content here -->
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title">Add Brands</h4>
+                    <p class="card-category">Complete User profile</p>
+                </div>
+                <div class="card-body">
+                    <form action="" method="post" name="form" enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="brand_id" class="bmd-label-floating">Brand Id</label>
+                                    <input asp-for="brand_id" type="text" id="brand_id" name="brand_id" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="brand_title" class="bmd-label-floating">Brand Title</label>
+                                    <input asp-for="brand_title" type="text" name="brand_title" id="brand_title" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" value="CreateBrand" name="btn_save" id="btn_save" class="btn btn-primary pull-right">Update Brand</button>
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

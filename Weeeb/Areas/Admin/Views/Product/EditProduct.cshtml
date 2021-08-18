@@ -1,0 +1,81 @@
+﻿@model Products
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layouta.cshtml";
+}
+<div class="content">
+    <div class="container-fluid">
+        <div class="col-md-12 mx-auto">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h5 class="title">Edit Product</h5>
+                </div>
+                <form action="/Admin/Product/EditProduct1" method="post">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="product_id" class="bmd-label-floating">Product Id</label>
+                                    <input asp-for="product_id" type="text" id="product_id" name="product_id" class="form-control" value="@Model.product_id" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="product_cat" class="bmd-label-floating">Product Category</label>
+                                    <input asp-for="product_cat" type="text" id="product_cat" name="product_cat" class="form-control" value="@Model.product_cat" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="product_brand" class="bmd-label-floating">Product Brand</label>
+                                    <input asp-for="product_brand" type="text" name="product_brand" id="product_brand" class="form-control" value="@Model.product_brand" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="product_title" class="bmd-label-floating">Product Title</label>
+                                    <input asp-for="product_title" type="text" name="product_title" id="product_title" class="form-control" value="@Model.product_title" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="product_price" class="bmd-label-floating">Product Price</label>
+                                    <input asp-for="product_price" type="text" id="product_price" name="product_price" class="form-control" value="@Model.product_price" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="product_desc" class="bmd-label-floating">Product Description</label>
+                                    <input asp-for="product_desc" type="text" id="product_desc" name="product_desc" class="form-control" value="@Model.product_desc" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="product_image" class="bmd-label-floating">Product Image</label>
+                                    <input asp-for="product_image" type="text" name="product_image" id="product_image" class="form-control" value="@Model.product_image" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="product_keywords" class="bmd-label-floating">Product Keywords</label>
+                                    <input asp-for="product_keywords" type="text" name="product_keywords" id="product_keywords" class="form-control" value="@Model.product_keywords" required>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <input type="submit" class="btn btn-fill btn-primary" name="submit" value="Update" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

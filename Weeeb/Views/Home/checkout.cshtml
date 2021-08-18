@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    if (Context.Session.GetString("username") != null)
+    {
+        ViewData["acc"] = "Hi " + Context.Session.GetString("username");
+        ViewData["user_id"] = Context.Session.GetString("uid");
+    }
+    else
+    {
+        ViewData["acc"] = "My Account";
+    }
+}
+
+<h3>
+    @ViewData["thongbao"]
+</h3>
+

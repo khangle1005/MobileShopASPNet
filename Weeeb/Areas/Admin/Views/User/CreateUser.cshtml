@@ -1,0 +1,77 @@
+﻿@model User_Info
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layouta.cshtml";
+}
+<!-- End Navbar -->
+<div class="content">
+    <div class="container-fluid">
+        <!-- your content here -->
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title">Add Users</h4>
+                    <p class="card-category">Complete User profile</p>
+                </div>
+                <div class="card-body">
+                    <form action="" method="post" name="form" enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="first_name" class="bmd-label-floating">First Name</label>
+                                    <input asp-for="first_name" type="text" id="first_name" name="first_name" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="last_name" class="bmd-label-floating">Last Name</label>
+                                    <input asp-for="last_name" type="text" name="last_name" id="last_name" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="email" class="bmd-label-floating">Email</label>
+                                    <input asp-for="email" type="email" name="email" id="email" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="password" class="bmd-label-floating">Password</label>
+                                    <input asp-for="password" type="password" id="password" name="password" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="mobile" class="bmd-label-floating">phone number</label>
+                                    <input asp-for="mobile" type="text" id="mobile" name="mobile" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="address1" class="bmd-label-floating">City</label>
+                                    <input asp-for="address1" type="text" name="address1" id="address1" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="address2" class="bmd-label-floating">Address</label>
+                                    <input asp-for="address2" type="text" name="address2" id="address2" class="form-control" required>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <button type="submit" value="CreateUser" name="btn_save" id="btn_save" class="btn btn-primary pull-right">Update User</button>
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

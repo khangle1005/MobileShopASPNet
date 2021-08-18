@@ -1,0 +1,81 @@
+﻿@model User_Info
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layouta.cshtml";
+}
+<div class="content">
+    <div class="container-fluid">
+        <div class="col-md-12 mx-auto">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h5 class="title">Edit User</h5>
+                </div>
+                <form action="/Admin/User/EditUser1" method="post">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="user_id" class="bmd-label-floating">User Id</label>
+                                    <input asp-for="user_id" type="text" id="user_id" name="user_id" class="form-control" value="@Model.user_id" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="first_name" class="bmd-label-floating">First Name</label>
+                                    <input asp-for="first_name" type="text" id="first_name" name="first_name" class="form-control" value="@Model.first_name" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="last_name" class="bmd-label-floating">Last Name</label>
+                                    <input asp-for="last_name" type="text" name="last_name" id="last_name" class="form-control" value="@Model.last_name" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="email" class="bmd-label-floating">Email</label>
+                                    <input asp-for="email" type="email" name="email" id="email" class="form-control" value="@Model.email" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="password" class="bmd-label-floating">Password</label>
+                                    <input asp-for="password" type="text" id="password" name="password" class="form-control" value="@Model.password" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="mobile" class="bmd-label-floating">phone number</label>
+                                    <input asp-for="mobile" type="text" id="mobile" name="mobile" class="form-control" value="@Model.mobile" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="address1" class="bmd-label-floating">City</label>
+                                    <input asp-for="address1" type="text" name="address1" id="address1" class="form-control" value="@Model.address1" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group bmd-form-group">
+                                    <label asp-for="address2" class="bmd-label-floating">Address</label>
+                                    <input asp-for="address2" type="text" name="address2" id="address2" class="form-control" value="@Model.address2" required>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <input type="submit" class="btn btn-fill btn-primary" name="submit" value="Update" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

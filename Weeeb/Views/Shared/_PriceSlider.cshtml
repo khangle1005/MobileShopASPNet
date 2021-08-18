@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+    $(function () {
+        $("#slider-range").slider({
+            range: true,
+            min: 0,
+            max: 5000,
+            values: [750, 3000],
+            slide: function (event, ui) {
+                $("#min").val(ui.values[0]);
+                $("#max").val(ui.values[1]);
+            }
+        });
+        $("#min").val($("#slider-range").slider("values", 0));
+        $("#max").val($("#slider-range").slider("values", 1));
+    });
+</script>
+
+<form asp-controller="Home" asp-action="Price">
+    <h4 class="aside-title">LỌC GIÁ</h4>
+    <input type="text" id="min" name="min" readonly style="border:0; color:#f6931f; font-weight:bold; width: 40px; float: left">
+    <input type="text" id="max" name="max" readonly style="border:0; color:#f6931f; font-weight:bold; width: 40px; float: right">
+    <br />
+    <div id="slider-range"></div><br />
+    <input class="btn btn-danger" type="submit" value="Lọc">
+</form>

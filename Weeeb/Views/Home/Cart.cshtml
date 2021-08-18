@@ -1,0 +1,146 @@
+﻿
+@model User_Info
+
+@{
+    ViewData["Title"] = "Home Page";
+    if (Context.Session.GetString("username") != null)
+    {
+        ViewData["acc"] = "Hi " + Context.Session.GetString("username");
+        ViewData["user_id"] = Context.Session.GetString("uid");
+    }
+    else
+    {
+        ViewData["acc"] = "My Account";
+    }
+}
+<script src="~/js/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".updateCart").click(function (event) {
+            event.preventDefault();
+            var quantity = $(".quantity_" + $(this).attr("data-id")).val();
+            console.log(quantity);
+            $.ajax({
+                type: "POST",
+                url:"@Url.Action("updateCart","Home")",
+                data: {
+                    id: $(this).attr("data-id"),
+                    quantity:quantity
+                },
+                success: function (result) {
+                    window.location.href = '@Url.Action("Cart","Home")';
+                }
+            });
+        });
+    });
+</script>
+
+<section class="section">
+    <div class="container-fluid">
+        <div id="cart_checkout">
+            <div class="main ">
+                <div class="table-responsive">
+                    <form method="post" action="">
+
+                        <div id="issessionset"></div><table id="cart" class="table table-hover table-condensed">
+                            <thead>
+                                <tr>
+                                    <th style="width:50%">Sản phẩm</th>
+                                    <th style="width:10%">Giá</th>
+                                    <th style="width:8%">Số lượng</th>
+                                    <th style="width:7%" class="text-center">Tổng</th>
+                                    <th style="width:10%"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in ViewBag.carts)
+                                {
+                                    string txt_class = "quantity_" + item.Product.product_id;
+                                    int total = item.Product.product_price * item.Quantity;
+                                    <tr>
+                                        <td data-th="Product">
+                                            <div class="row">
+                                                <div class="col-sm-4 ">
+                                                    <img src="/product_images/@item.Product.product_image" style="height: 70px;width:75px;">
+                                                    <h4 class="nomargin product-name header-cart-item-name"><a asp-controller="Product" asp-action="GetProduct" asp-route-id="@item.Product.product_id">@item.Product.product_title</a></h4>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div style="max-width: 50px;">
+                                                        <p>@item.Product.product_desc</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <input type="hidden" name="product_id[]" value="71">
+                                        <input type="hidden" name="" value="150">
+                                        <td data-th="Price"><input type="text" class="form-control price" value="@item.Product.product_price" readonly="readonly"></td>
+                                        <td data-th="Quantity">
+                                            <input type="text" class="form-control @txt_class" value="@item.Quantity" />
+                                        </td>
+                                        <td data-th="Subtotal" class="text-center"><input type="text" class="form-control total" value="@item.Product.product_price" readonly="readonly"></td>
+                                        <td class="actions" data-th="">
+                                            <div class="btn-group">
+                                                <a href="" data-id="@item.Product.product_id" class="updateCart"><i class="fa fa-refresh"></i></a>
+
+                                                <a asp-controller="Home" asp-action="deleteCart" asp-route-id="@item.Product.product_id"><i class="fa fa-trash-o"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    @{
+                                        var total1 = 0;
+                                    }
+                                    @foreach (var item in ViewBag.carts)
+                                    {
+                                        total1 = total1 + (item.Product.product_price * item.Quantity);
+                                    }
+                                    <td><a asp-controller="Home" asp-action="Index"><i class="fa fa-angle-left"></i> Tiếp tục mua hàng</a></td>
+                                    <td colspan="2" class="hidden-xs"></td>
+                                    <td class="hidden-xs text-center"><b class="net_total">Tổng tiền :  @total1 đ</b></td>
+
+                                    @*<td>
+                                        <a asp-controller="Home" asp-action="Checkout" asp-route-id="@ViewData["user_id"]"><button type="button" class="btn btn-success">Thanh toán</button></a>
+                                    </td>*@
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="width: 30%; margin: auto">
+        <form action="/Home/checkout" method="post">
+
+
+            Mã người dùng: <input class="form-control" type="text" name="user_id" value="@Model.user_id" required readonly><br>
+            Người nhận: <input class="form-control" type="text" name="name" value="@Model.last_name" required><br>
+            Email: <input class="form-control" type="text" name="email" value="@Model.email" required><br>
+            Số điện thoại: <input class="form-control" type="text" name="phone" value="@Model.mobile" required><br>
+            Địa chỉ: <input class="form-control" type="text" name="address" value="@Model.address1" required><br>
+            Ghi chú: <textarea class="form-control" name="note" value=""></textarea>
+
+            <input class="form-control" type="hidden" name="order_id" value="" readonly><br>
+            <input class="form-control" type="hidden" name="order_date" value="" required readonly><br>
+            <input class="form-control" type="hidden" name="quantity" value="0" required readonly><br>
+            <input class="form-control" type="hidden" name="total" value="0" readonly><br>
+            <input class="form-control" type="hidden" name="paid_status" value="0" required readonly><br>
+            <input class="form-control" type="hidden" name="status" value="0" required readonly><br>
+
+            @{
+                var total2 = 0;
+            }
+            @foreach (var item in ViewBag.carts)
+            {
+                total2 = total2 + (item.Product.product_price * item.Quantity);
+            }
+            <input style="float:right" type="submit" name="submit" class="btn btn-success" value="Đặt hàng" />
+
+            <b class="net_total">Thành tiền: @total2 đ</b>
+        </form>
+    </div>
+    
+</section>	

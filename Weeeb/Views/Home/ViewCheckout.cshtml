@@ -1,0 +1,31 @@
+﻿@model User_Info
+
+@{
+    ViewData["Title"] = "Checkout";
+    if (Context.Session.GetString("username") != null)
+    {
+        ViewData["acc"] = "Hi " + Context.Session.GetString("username");
+        ViewData["user_id"] = Context.Session.GetString("uid");
+
+    }
+    else
+    {
+        ViewData["acc"] = "My Account";
+    }
+}
+
+<div style="width: 30%; margin: auto">
+    Id: <input class="form-control" type="text" name="user_id" value="@Model.user_id" required readonly><br>
+    Người nhận: <input class="form-control" type="text" name="name" value="@Model.last_name" required><br>
+    Email: <input class="form-control" type="text" name="email" value="@Model.email" required><br>
+    Số điện thoại: <input class="form-control" type="text" name="phone" value="@Model.mobile" required><br>
+    Địa chỉ: <input class="form-control" type="text" name="address" value="@Model.address1" required><br>
+    Ghi chú: <textarea class="form-control" name="note" value=""></textarea>
+</div>
+
+
+<b class="net_total">Thành tiền :  đ</b>
+<div style="margin: auto">
+    <input style="margin-right: 16px" type="submit" name="submit" form="cart-form" class="btn btn-success" value="Xác nhận" />
+    <input style="margin-right: 16px" type="submit" name="delete-all" form="cart-form" class="btn btn-danger" value="Xóa giỏ hàng" />
+</div>

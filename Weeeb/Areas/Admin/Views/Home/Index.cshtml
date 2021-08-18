@@ -1,0 +1,232 @@
+﻿@model ViewModel1
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layouta.cshtml";
+}
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Dashboard</h1>
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Dashboard v1</li>
+                </ol>
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3>150</h3>
+
+                        <p>New Orders</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-bag"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-success">
+                    <div class="inner">
+                        <h3>53<sup style="font-size: 20px">%</sup></h3>
+
+                        <p>Bounce Rate</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-warning">
+                    <div class="inner">
+                        <h3>44</h3>
+
+                        <p>User Registrations</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-person-add"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-danger">
+                    <div class="inner">
+                        <h3>65</h3>
+
+                        <p>Unique Visitors</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-pie-graph"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</section>
+<div class="content">
+    <div class="container-fluid">
+        <div class="col-md-14">
+            <div class="card ">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title"> Users List</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive ps">
+                        <table class="table table-hover tablesorter " id="">
+                            <thead class=" text-primary">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>FirstName</th>
+                                    <th>LastName</th>
+                                    <th>Email</th>
+                                    <th>Password</th>
+                                    <th>Contact</th>
+                                    <th>Address</th>
+                                    <th>City</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var a in Model.sp1)
+                                {
+                                    <tr>
+                                        <td>@a.user_id</td>
+                                        <td>@a.first_name</td>
+                                        <td>@a.last_name</td>
+                                        <td>@a.email</td>
+                                        <td>@a.password</td>
+                                        <td>@a.mobile</td>
+                                        <td>@a.address1</td>
+                                        <td>@a.address2</td>
+
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card ">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title"> Categories List</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive ps">
+                            <table class="table table-hover tablesorter " id="">
+                                <thead class=" text-primary">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Categories</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var c in Model.sp3)
+                                    {
+                                        <tr>
+                                            <td>@c.cat_id</td>
+                                            <td>@c.cat_title</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card ">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title">Brands List</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive ps">
+                            <table class="table table-hover tablesorter " id="">
+                                <thead class=" text-primary">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Brands</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var d in Model.sp4)
+                                    {
+                                        <tr>
+                                            <td>@d.brand_id</td>
+                                            <td>@d.brand_title</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="card ">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title">Subscribers</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive ps">
+                        <table class="table table-hover tablesorter " id="">
+                            <thead class=" text-primary">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>email</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var b in Model.sp2)
+                                {
+                                    <tr>
+                                        <td>@b.email_id</td>
+                                        <td>@b.email</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
